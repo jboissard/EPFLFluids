@@ -1,0 +1,555 @@
+%
+%  untitled
+%
+%  Created by Johan Boissard [] on 2010-02-27.
+%  Copyright (c) Johan Boissard. All rights reserved.
+% hhh
+\documentclass[a4paper]{amsart}
+
+
+% Packages
+\usepackage[french]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{comment}
+
+%special math typos - see page 65 (table 196) of comprehensive latex tut
+\usepackage{amsmath,amssymb,mathrsfs}
+%allows to write on whole page
+\usepackage{fullpage}
+
+%package to display degree symbol
+\usepackage{gensymb}
+
+%package for page numbering and footer
+\usepackage{fancyhdr}
+%to get last page
+\usepackage{lastpage} % \pageref{LastPage}
+%allows inclusion of graphics
+\usepackage{graphics}
+\usepackage{ulem}
+\DeclareGraphicsExtensions{.pdf, .jpeg,.jpg}
+%allows drawing
+%ref:http://www.texample.net/
+\usepackage{tikz}
+
+%allows inclusion of url (hyperref is better than url) 
+%ref: http://www.fauskes.net/nb/latextips/
+\usepackage{hyperref}
+
+%package for chemistry ie: \ce{(NH4)2SO4 -> NH4+ + 2SO4^2-} 
+%ref:www.ctan.org/tex-archive/macros/latex/contrib/mhchem/mhchem.pdf
+\usepackage[version=3]{mhchem}
+
+%comments (begin{comment})
+\usepackage{comment}
+
+% Title
+\title{BioFluids}
+\author{Johan Boissard}
+\date\today
+
+
+
+
+
+
+
+\pagestyle{fancyplain}
+%delete current header & footer configuration
+\fancyhf{} 
+\renewcommand{\headrulewidth}{0pt}
+%\fancyhead[EL]{Titel} %Kopfzeile links
+%\fancyhead[C]{} %zentrierte Kopfzeile
+%\fancyhead[LE,RO]{Name} %Kopfzeile rechts
+%head separation line 
+%\renewcommand{\headrulewidth}{0.4pt} 
+%foot separation line
+%\renewcommand{\footrulewidth}{0.4pt}
+%page number
+\fancyfoot[OL]{\thepage\ of \pageref{LastPage}}
+%\fancyfoot[ER]{\thepage}
+
+
+% Header
+\setlength{\voffset}{0pt}
+\setlength{\topmargin}{0in}
+\setlength{\headheight}{0in}
+\setlength{\headsep}{0in}
+
+\begin{document}
+%\maketitle
+\twocolumn
+
+
+
+\section{Fluid Properties}
+\subsection{Fluid properties}
+\subsubsection{Density}
+\begin{eqnarray*}
+	\rho=\frac{m}{V}&
+	\begin{cases}
+		\rho_\text{air}=1.23 [\text{kg/m$^3$}]\\
+		\rho_\text{water}=999 [\text{kg/m$^3$}]
+	\end{cases}
+\end{eqnarray*}
+\subsubsection{Specific Volume}
+\begin{eqnarray*}
+	\dot v=\frac{1}{\rho}
+\end{eqnarray*}
+\subsubsection{Specific weight}
+\begin{eqnarray*}
+	\gamma=\rho g
+\end{eqnarray*}
+\subsubsection{Specific gravity}
+\begin{eqnarray*}
+	SG=\frac{\rho}{\rho_{H_20@4\degree}}
+\end{eqnarray*}
+\subsection{Ideal Gas Law}
+\begin{eqnarray*}
+	p=\rho RT
+\end{eqnarray*}
+$p$ absolute pressure, $\rho$ density, $R$ gas constant (dependant of fluid), $T$ absolute Temperature.
+\begin{eqnarray*}
+	&\text{Absolute pressure} \\&=& \\
+	&\underbrace{\text{Atmospheric pressure}}_{101 [\text{kPa}]}
+	 + \text{gage pressure}
+\end{eqnarray*}
+
+
+\begin{comment}
+	The behavior of a flowing fluid depends on various fluid properties. Viscosity, one 
+	of the important properties, is responsible for the shear force produced in a moving 
+	fluid. 
+	Although the two fluids shown look alike (both are clear liquids and have a specific 
+	gravity of 1), they behave very differently when set into motion. The very viscous 
+	silicone oil is approximately 10,000 times more viscous than the water
+	\subsection{No-slip condition}
+	As a fluid flows near a solid surface, it "sticks" to the surface, i.e., the fluid matches the 
+	velocity of the surface. This so-called "no-slip" condition is a very important one that must 
+	be satisfied in any accurate analysis of fluid flow phenomena. 
+	Dye injected at the bottom of a channel through which water is flowing forms a stagnant 
+	layer near the bottom due to the noslip condition. As the dye filament is moved away from 
+	the bottom, the motion of the water is clearly apparent. A significant velocity gradient is 
+	created near the bottom.	
+\end{comment}
+\subsection{Fluidity}
+
+\subsection{Viscosity}
+Speed profile:
+\begin{eqnarray*}
+	u(y)=U\frac{y}{b}
+\end{eqnarray*}
+Rate of shearing strain
+\begin{eqnarray*}
+	\dot \gamma = \frac{U}{b}=\frac{du}{dy}
+\end{eqnarray*}
+Shearing stress
+\begin{eqnarray*}
+	\tau \propto \dot\gamma\\
+	\tau=\mu\frac{du}{dy}=\frac{F}{A}\\
+	T=r\times F
+\end{eqnarray*}
+
+Newtonian Fluids: $\mu$ is constant
+\\
+Non-Newtonian Fluids: $\mu$ is not constant and $\tau\propto\dot\gamma$ is no longer applicable.
+\subsubsection{Sutherland Equation}
+\begin{eqnarray*}
+	\mu=\frac{CT^{3/2}}{T+S}
+\end{eqnarray*}
+\subsubsection{Andrade's Equation}
+\begin{eqnarray*}
+	\mu=De^{B/T}\\
+	\ln{\mu}=\ln{D}+\frac{B}{T}
+\end{eqnarray*}
+
+\subsubsection{Kinematic viscosity}
+\begin{eqnarray*}
+	v=\frac{\mu}{\rho}
+\end{eqnarray*}
+
+%%%%%%% 2
+\section{Fluid statics}
+\textbf{Pressure is equal at every point in a fluid at rest}
+
+\begin{eqnarray*}
+	\frac{\partial p}{\partial x}=\frac{\partial p}{\partial y}=0\\
+	\frac{\partial p}{\partial x}=\frac{dp}{dz}=-\gamma=-\rho g\\
+	p=\gamma h+p_0
+\end{eqnarray*}
+\subsection{Hydrostatic Force on a Plane Surface}
+\begin{eqnarray*}
+	F_R=\gamma h_cA&h_c=\text{centroid}\\
+	y_R=\frac{I_{xc}}{h_cA}+h_c & I_x=I_{xc}+Ah_c^2\\
+	I_{xc}=\frac{1}{12}h^3w
+\end{eqnarray*}
+
+\subsection{Buoyancy}
+\begin{eqnarray*}
+	\mathbf{F_B}=\rho gV_{\text{immerged}}\\
+	F=A\cdot P & (\text{exos})\\
+	P_iV_i=P_fV_f
+\end{eqnarray*}
+
+%%%% 3
+\section{Elementary Fluid Dynamics - The Bernoulli Equation}
+\subsection{Bernoulli Equation}
+\begin{eqnarray*}
+	\frac{P}{\rho}+\frac{V^2}{2}+gz=\text{constant along a streamline}
+\end{eqnarray*}
+\begin{eqnarray*}
+	\frac{P}{\rho}+\int\frac{V^2}{R}dn+gz=\text{constant across a streamline}
+\end{eqnarray*}
+\subsection{Continuity Equation}
+\begin{eqnarray*}
+	Q=Q_i=A_iV_i&[m^3/s]&i=1,2,\dots
+\end{eqnarray*}
+
+
+%%%%%%%
+\section{Fluid Kinematics}
+\subsection{Velocity Fields}
+\begin{eqnarray*}
+	\frac{dy}{dx}=\frac{v}{u}
+\end{eqnarray*}
+\subsection{Material Derivative}
+\begin{eqnarray*}
+	\frac{D( )}{Dt}=\frac{\partial ( )}{\partial t}+(\mathbf{V}\cdot\nabla)( )
+\end{eqnarray*}
+\subsection{Acceleration}
+\begin{eqnarray*}
+	\mathbf{a}
+	&=&
+	\begin{pmatrix}
+		a_x\\
+		a_y\\
+		a_z\\
+	\end{pmatrix}
+	\nonumber\\
+	&=&\frac{D \mathbf{V}}{Dt}=a_s\hat s+a_n\hat n\nonumber\\
+	&=&
+	\underbrace{\frac{\partial \mathbf{V}}{t}}_{\text{local}}
+	+\underbrace{\mathbf{V}\cdot\nabla( \mathbf{V} )}_{\text{convective}}\nonumber\\
+	&=&\frac{\partial \mathbf{V}}{t}+
+	\begin{pmatrix}
+		u\\
+		v\\
+		w
+	\end{pmatrix}
+	\cdot
+	\begin{pmatrix}
+		\frac{\partial\mathbf{V}}{\partial x} &
+		\frac{\partial\mathbf{V}}{\partial y} &
+		\frac{\partial\mathbf{V}}{\partial z}		
+	\end{pmatrix}
+	\nonumber\\
+	&=&\frac{\partial \mathbf{V}}{t}+u\frac{\partial\mathbf{V}}{\partial x}+v\frac{\partial \mathbf{V}}{\partial y}+w\frac{\partial\mathbf{V}}{\partial z}\nonumber\\
+	&=&
+	\begin{pmatrix}
+		\frac{\partial u}{\partial t} + u\frac{\partial u}{\partial x}+ v\frac{\partial u}{\partial y}+ w\frac{\partial u}{\partial z}\\
+		\frac{\partial v}{\partial t} + u\frac{\partial v}{\partial x}+ v\frac{\partial v}{\partial y}+ w\frac{\partial v}{\partial z}\\
+		\frac{\partial w}{\partial t} + u\frac{\partial w}{\partial x}+ v\frac{\partial w}{\partial y}+ w\frac{\partial w}{\partial z}
+		
+	\end{pmatrix}
+\end{eqnarray*}
+with $\mathbf{V}=(u,v,w)$
+\subsubsection{Acceleration in streamline coordinates}
+\begin{eqnarray*}
+	\mathbf{a}=V\frac{\partial V}{\partial s}\mathbf{\hat s}+\frac{V^2}{R}\mathbf{\hat n}\\
+	a_s=V\frac{\partial V}{\partial s}\\a_n=\frac{V^2}{R}
+\end{eqnarray*}
+
+\subsection{Reynolds Transport Theorem (RTT)}
+%\includegraphics[width=.4]{img1}
+\begin{eqnarray*}
+	\frac{D B_{sys}}{Dt}=\frac{\partial B_{CV}}{\partial t}+\int_{CS}\rho b \mathbf{v}\cdot\mathbf{n}dA
+\end{eqnarray*}
+
+\section{Finite Control Volume Analysis}
+\subsection{Continuity Equation}
+In RTT, $B=m$ and $b=B/m=1$
+\begin{eqnarray*}
+	\frac{D M_{sys}}{Dt}&=&0\\
+	%\frac{D}{Dt}\int_{sys}\rho dV&=&\frac{\partial}{\partial t}\int_{CV}\rho dV+\int_{CS}\rho \mathbf{V}\cdot \mathbf{\hat n}dA
+	\frac{\partial}{\partial t}\int_{CV}\rho dV+\int_{CS}\rho \mathbf{V}\cdot \mathbf{\hat n}dA&=&0
+\end{eqnarray*}
+
+\subsection{Linear Momentum Equation}
+\begin{eqnarray*}
+	\frac{\partial}{\partial t}\int_{CV}\mathbf{V}\rho dV+\int_{CS}\mathbf{V}\rho \mathbf{V}\cdot \mathbf{\hat n}dA=\sum \mathbf{F_{\text{ext}}}
+\end{eqnarray*}
+
+
+\subsection{Energy Equation}
+\begin{eqnarray*}
+	\frac{\partial}{\partial t}\int_{CV}e\rho dV
+	+
+	\int_{CS}e\rho \mathbf{V}\cdot \mathbf{\hat n}dA
+	=
+	\left(\dot Q_{\text{net}}+\dot W_{\text{net}}\right)_{CV}
+	\\\dot =\text{[J/s]}\dot =\text{[F$\cdot$m/s]}\dot =\text{[kg$\cdot$m/s$^2$]}
+\end{eqnarray*}
+\begin{eqnarray*}
+	\frac{\partial}{\partial t}\int_{CV}e\rho dV
+	+
+	\int_{CS}\left(\check u+\frac{p}{\rho}+\frac{v^2}{2}+gz\right)\rho \mathbf{V}\cdot \mathbf{\hat n}dA
+	\\
+	=
+	\left(\dot Q_{\text{net}}+\dot W_{\text{net}}\right)_{CV}
+\end{eqnarray*}
+\begin{eqnarray*}
+	\dot m
+	[
+		\check u_{out}
+		-\check u_{in}
+		+
+			\left(\frac{p}{\rho}\right)_{out}
+		-	
+			\left(\frac{p}{\rho}\right)_{in}\\
+		+
+			\frac{1}{2}
+				\left(V_{out}^2-V_{in}^2\right)
+		+
+			g(z_{out}-z_{in})
+	]
+	\\
+	=\dot Q_{net}+\dot W_{\text{net}}
+\end{eqnarray*}
+
+\begin{eqnarray*}
+	\frac{P_1}{\rho}+\frac{v_1^2}{2}+gz_1
+	+{w_{\text{shaft}}}
+	=\frac{P_2}{\gamma}+\frac{v_2^2}{2g}+gz_2
+	+\text{loss}&
+	\text{ [m$^2$/s$^2$]}
+	\\
+	\frac{P_1}{\gamma}+\frac{v_1^2}{2g}+z_1
+	+\underbrace{\frac{\dot W_{s}}{\gamma Q}}_{h_s}
+	=\frac{P_2}{\gamma}+\frac{v_2^2}{2g}+z_2
+	+\underbrace{\frac{\text{loss}}{g}}_{h_l}
+\end{eqnarray*}
+\begin{eqnarray*}
+	\text{turbine head}&h_T=-(h_s+h_L)_T\\
+	\text{pump head}&h_P=(h_s-h_L)_P
+\end{eqnarray*}
+\begin{eqnarray*}
+	v=\frac{\int v^2\rho \mathbf{v}\cdot\mathbf{\hat n}dA}{\overline v A}
+\end{eqnarray*}
+
+
+\onecolumn
+\newpage
+\twocolumn
+\section{Differential Analysis of Fluid Flow}
+\subsection{Volumetric dilatation rate}
+\begin{eqnarray*}
+	\frac{1}{V}\frac{d(\delta V)}{dt}=\mathbf{\nabla}\cdot \mathbf{V}
+	\\
+	\mathbf{\nabla}\cdot \mathbf{V}=0\Rightarrow&\text{Incompressible fluid}
+\end{eqnarray*}
+
+\subsection{Vorticity}
+\begin{eqnarray*}
+	\mathbf{J}=\nabla\times \mathbf{V}&\\
+	\nabla\times \mathbf{V}=0&\Rightarrow\text{Irrotational fluid}
+\end{eqnarray*}
+Irrotational, Bernoulli applies otherwise Euler.
+
+\subsection{Rate rotation Vector}
+\begin{eqnarray*}
+	\mathbf{\omega}=\frac{1}{2} \mathbf{J}
+\end{eqnarray*}
+
+\subsection{Rate of angular deformation}
+\begin{eqnarray*}
+	\dot \gamma=\frac{\partial v}{\partial x} + \frac{\partial u}{\partial y}
+\end{eqnarray*}
+
+\subsection{Stream Function}
+\begin{eqnarray*}
+	u=\frac{\partial \psi}{\partial y}
+&&	v=-\frac{\partial \psi}{\partial x}	
+\\
+	v_r=\frac{1}{r}\frac{\partial \psi}{\partial \theta}
+&&	v_\theta=-\frac{\partial \psi}{\partial r}
+\end{eqnarray*}
+\subsubsection{Rate of flow}
+\begin{eqnarray*}
+	Q=\Psi(B) - \Psi(A) & \text{[m$^3$/s]}
+\end{eqnarray*}
+\subsection{Velocity Potential}
+\begin{eqnarray*}
+	\mathbf{v}=\nabla\phi
+\end{eqnarray*}
+\subsubsection{Conservation of Mass}
+\begin{eqnarray*}
+	\nabla\cdot \mathbf{V}=\nabla^2\phi=0
+\end{eqnarray*}
+
+\subsection{Euler's equations of Motion}
+\begin{eqnarray*}
+	\rho \mathbf{g}-\nabla p=\rho\left(\frac{\partial \mathbf{v}}{\partial t}+(\mathbf{v}\cdot\nabla)\mathbf{v}\right)=\rho\frac{D \mathbf{v}}{Dt}
+\end{eqnarray*}
+
+\subsection{Navier-Stokes Equations}
+\subsubsection{Cartesian Coordinates}
+\begin{eqnarray*}
+	\rho \mathbf{g}-\nabla p+\mu\nabla^2 \mathbf{v}=\rho\left(\frac{\partial \mathbf{v}}{\partial t}+(\mathbf{v}\cdot\nabla)\mathbf{v}\right)
+\end{eqnarray*}
+
+\subsubsection{Shearing stresses}
+\begin{eqnarray*}
+	\begin{cases}
+		\tau_{xy}=\mu\left(\frac{\partial u}{\partial y}+\frac{\partial v}{\partial x}\right)\\
+		\tau_{yz}=\mu\left(\frac{\partial v}{\partial z}+\frac{\partial w}{\partial y}\right)\\
+		\tau_{xz}=\mu\left(\frac{\partial w}{\partial x}+\frac{\partial u}{\partial z}\right)		
+	\end{cases}
+\end{eqnarray*}
+%\begin{comment}
+
+\subsubsection{Cylindrical Coordinates}
+\begin{eqnarray*}
+	r:
+	\rho g_r
+	-\frac{\partial p}{\partial r}
+	\\
+	\mu \Bigg[\frac{1}{r}\frac{\partial}{\partial r}\left(r \frac{\partial u_r}{\partial r}\right) 
++ \frac{1}{r^2}\frac{\partial^2 u_r}{\partial \phi^2}
+	+ \frac{\partial^2 u_r}{\partial z^2}-\frac{u_r}{r^2}-\frac{2}{r^2}\frac{\partial u_\phi}{\partial \phi}\Bigg]
+	\\=
+	\rho\left(
+	\frac{\partial u_r}{\partial t} + u_r \frac{\partial u_r}{\partial r} + \frac{u_{\phi}}{r} \frac{\partial u_r}{\partial \phi} 
+	+ u_z \frac{\partial u_r}{\partial z} - \frac{u_{\phi}^2}{r}
+	\right) 
+	\\
+	%%%
+	\phi: 
+	\rho g_{\phi}
+	-\frac{1}{r}\frac{\partial p}{\partial \phi} 
+	\\
+	+ \mu 
+		\left[\frac{1}{r}\frac{\partial}{\partial r}\left(r \frac{\partial u_{\phi}}{\partial r}\right) 
+		+ \frac{1}{r^2}\frac{\partial^2 u_{\phi}}{\partial \phi^2} 
+		+ \frac{\partial^2 u_{\phi}}{\partial z^2} 
+		+ \frac{2}{r^2}\frac{\partial u_r}{\partial \phi} 
+		- \frac{u_{\phi}}{r^2}\right]
+	\\
+	=
+	\rho\left(	
+		\frac{\partial u_{\phi}}{\partial t} 
+		+ u_r \frac{\partial u_{\phi}}{\partial r} 
+		+ \frac{u_{\phi}}{r} \frac{\partial u_{\phi}}{\partial \phi} 
+		+ u_z \frac{\partial u_{\phi}}{\partial z} 
+		+ \frac{u_r u_{\phi}}{r}\right) 	
+	\\
+	%%%
+	z:
+	\rho g_z
+	-\frac{\partial p}{\partial z}
+	\\
+	+ \mu \left[\frac{1}{r}\frac{\partial}{\partial r}\left(r \frac{\partial u_z}{\partial r}\right) + \frac{1}{r^2}\frac{\partial^2 u_z}{\partial \phi^2} + \frac{\partial^2 u_z}{\partial z^2}\right]
+	\\=
+	\rho 
+	\left(\frac{\partial u_z}{\partial t} 
+	+ u_r \frac{\partial u_z}{\partial r} 
+	+ \frac{u_{\phi}}{r} \frac{\partial u_z}{\partial \phi} 
+	+ u_z \frac{\partial u_z}{\partial z}\right) 
+\end{eqnarray*}
+%\end{comment}
+
+
+
+\subsubsection{Nabla operator in cylindrical coordinates}
+\begin{eqnarray*}
+	\nabla=(
+	{\partial f \over \partial \rho},
+	{1 \over \rho}{\partial f \over \partial \phi},
+	{\partial f \over \partial z}\boldsymbol{\hat z})
+	&
+	r=\sqrt{\rho^2+z^2}
+\end{eqnarray*}
+
+
+\subsubsection{Poiseuille's Law}
+\begin{eqnarray*}
+	Q=\frac{\pi R^4\Delta p}{8\mu l}\\
+	\overline v = \frac{R^2\Delta p}{8\mu l}&Q=\pi R^2\\
+	v_{\text{max}}=-\frac{R^2}{4\mu}\frac{\partial p}{\partial z}=\frac{R^2\Delta p}{4\mu l}
+	& v_{\text{max}}=2\overline v\\
+	\frac{v_z}{v_{\text{max}}}=1-\left(\frac{r}{R}\right)^2
+\end{eqnarray*}
+
+
+\section{Dimensional Analysis}
+\subsection{Buckingham Pi Theorem}
+\begin{eqnarray*}
+	u_1&=&f(u_2,\dots,u_k)\\
+	&\rightarrow&
+	\\
+	\Pi_1&=&\phi(\Pi_2,\dots,\Pi_k-r)
+\end{eqnarray*}
+where $r$ is the number of repeating variables.
+\subsection{Similitude and Models}
+\begin{eqnarray*}
+	\Pi_{i_{\text{model}}}=\Pi_i&\forall i
+\end{eqnarray*}
+$\mu\dot =FL^{-2}T, \rho=FL^{-4}T^2$
+
+
+\section{Viscous Flow in Pipes}
+\subsection{Reynold's Number}
+\begin{eqnarray*}
+	Re=\frac{\rho vD}{\mu}=\frac{vD}{\nu}<2100
+\end{eqnarray*}
+\subsubsection{Fully Developed Profile}
+\begin{eqnarray*}
+	\text{laminar} &\frac{l_e}{D}=0.06 Re
+	\\
+	\text{turbulent} &\frac{l_e}{D}=4.4(Re)^{1/6}
+\end{eqnarray*}
+
+\subsection{Laminar Pipe Flow (Poiseuille improved)}
+\begin{eqnarray*}
+	v=\frac{(\Delta p -\gamma l \sin{\theta})D^2}{32\mu l}
+\end{eqnarray*}
+\subsection{Major Losses (to be added to Bernoulli)}
+\begin{eqnarray*}
+	h_{L_{\text{Major}}}=f\frac{l}{D}\frac{v^2}{2g}
+\end{eqnarray*}
+\subsection{Minor Losses}
+\begin{eqnarray*}
+	h_{L_{\text{Minor}}}=K_L\frac{v^2}{2g} 
+	&
+	K_L=\frac{\Delta p}{\frac{1}{2}\rho v^2}
+\end{eqnarray*}
+\subsection{Moody Chart}
+\begin{eqnarray*}
+	f \leftrightarrow \frac{\epsilon}{D} \leftrightarrow Re
+\end{eqnarray*}
+
+\section{Boundary Layers, Drag \& Lift}
+\subsection{Lift \& Drag}
+\subsubsection{Drag}
+\begin{eqnarray*}
+	\mathscr D&=&\int dFx = \int p\cos\theta dA+\int\tau_\omega\sin\theta dA
+	\\
+	c_{\mathscr D}&=&\frac{\mathscr D}{\frac{1}{2}\rho U^2A}
+\end{eqnarray*}
+\subsubsection{Lift}
+\begin{eqnarray*}
+	\mathscr L&=&\int dFy = -\int p\sin\theta dA+\int\tau_\omega\cos\theta dA	
+	\\
+	c_{\mathscr L}&=&\frac{\mathscr L}{\frac{1}{2}\rho U^2A}
+\end{eqnarray*}
+\subsection{Boundary Layer for Laminar Flow}
+\begin{eqnarray*}
+	\delta = c\sqrt{x} \propto \sqrt{\frac{\nu}{U}}\sqrt{x}
+	\\
+	\tau_\omega=0.332U^{3/2}\sqrt{\frac{\rho\mu}{x}}\\
+	\mathscr{D}=\int \tau_\omega dA
+	\\
+	\text{Power} =\frac{\text{Energy}}{t}= \mathscr{D}v
+\end{eqnarray*}
+
+\end{document}
